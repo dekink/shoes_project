@@ -1,160 +1,274 @@
-<!-- Navigation -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shoes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">다 인 책</a>
+        <a class="navbar-brand" href="">Shoes</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link" href="http://bigjob.dbguide.net/">빅데이터 캠퍼스</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-
-
-<html>
-  <head>
-  </head>
-  <body>
-    <section class="bg-dark text-white">
-          <div class="container text-center">
-            FFFF
-            {{ info.name }}
-            {{ info.file}}
-            <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-            <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url("{% static 'img/home-bg.jpg' %}" )">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Shoes recommend</h1><br>
+              <span class="subheading">▼</span>
+            </div>
           </div>
-        </section>
-        <!-- 지도 담는 영역 -->
-            <div id="map" style="width:100%;height:600px;"></div>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eae8ea0f70041e7c6936a1f9d2e38f86&libraries=services"></script>
-            <script>
-            var imageSrc = 'C:\Users\DE\Desktop\m.png', // 마커이미지의 주소입니다
-            imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
-            imageOption = {offset: new daum.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-            // 장소 검색 객체를 생성합니다
-            var ps = new daum.maps.services.Places();
-
-            // 주소-좌표 변환 객체를 생성합니다
-            var geocoder = new daum.maps.services.Geocoder();
-
-              var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-              mapOption = {
-                  center: new daum.maps.LatLng(33.450702, 126.570667), // 지도의 중심좌표
-                  level: 1 // 지도의 확대 레벨
-              };
-
-              var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+        </div>
+      </div>
+    </header>
 
 
-              if (navigator.geolocation) {
-
-                 // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-                 navigator.geolocation.getCurrentPosition(function(position) {
-
-                 var lat = position.coords.latitude, // 위도
-                     lon = position.coords.longitude; // 경도
-
-                locPosition = new daum.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-
-
-                //document.getElementById("dd").innerHTML = locPosition;
-                 map.setCenter(locPosition);
-                 // 현재 지도 표로 주소를 검색
-                 searchAddrFromCoords(locPosition, displayCenterInfo);
-
-               });
-             }
-             else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-                locPosition = new daum.maps.LatLng(37, 126.570667);
-                 // message = 'geolocation을 사용할수 없어요..'
-                 map.setCenter(locPosition);
-                 searchAddrFromCoords(locPosition, displayCenterInfo);
-               }
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+                <div class="row col-lg-12">
+                  {% for r in result %}
+                  <div class="col-lg-3 col-sm-4 ">
+                      <figure class="snip1132">
+                    <img class="img-fluid" src="{% static r.path %}" style="top:0; left: 0; width: 300px; height:300px;">
+                    <figcaption>
+                      <div class="heading">
+                        <h3>{{ r.index }}</h3>
+                      </div>
+                      <div class="caption">
+                        <p>########## 6pm ##########</p>
+                      </div>
+                    </figcaption>
+                    </figure>
+                </div>
+                {% endfor %}
+              </div>
 
 
 
-              // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-              var infowindow = new daum.maps.InfoWindow({zIndex:1});
+
+        <div class="post-preview">
+          <a href="post.html"><br><br><br>
+            <h2 class="post-title">
+              Para mí que comenzaré a volar desde este momento
+            </h2>
+            <h3 class="post-subtitle">
+              El positivismo es mi fuerte Mi virtud es que soy positiva
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">Fuerza</a>
+            2018, 08, 28</p>
+        </div>
+        <hr>
 
 
-              // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-              function placesSearchCB (data, status, pagination) {
-                if (status === daum.maps.services.Status.OK) {
 
-                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-                // LatLngBounds 객체에 좌표를 추가합니다
-                var bounds = new daum.maps.LatLngBounds();
+      </div>
+    </div>
 
-                for (var i=0; i<data.length; i++) {
-                    displayMarker(data[i]);
-                    bounds.extend(new daum.maps.LatLng(data[i].y, data[i].x));
-                }
+    <hr><br>
+    <div>
+      <!-- 지도 담는 영역 -->
+        <div id="map" style="width:100%;height:600px;"></div>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eae8ea0f70041e7c6936a1f9d2e38f86&libraries=services"></script>
+        <script>
+        //var imageSrc = 'C:\Users\DE\Desktop\m.png', // 마커이미지의 주소입니다
+        imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
+        imageOption = {offset: new daum.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-                map.setBounds(bounds);
+        // 장소 검색 객체를 생성합니다
+        var ps = new daum.maps.services.Places();
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new daum.maps.services.Geocoder();
+
+          var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+          mapOption = {
+              center: new daum.maps.LatLng(33.450702, 126.570667), // 지도의 중심좌표
+              level: 1 // 지도의 확대 레벨
+          };
+
+          var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+          if (navigator.geolocation) {
+
+             // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+             navigator.geolocation.getCurrentPosition(function(position) {
+
+             var lat = position.coords.latitude, // 위도
+                 lon = position.coords.longitude; // 경도
+
+            locPosition = new daum.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+
+
+            //document.getElementById("dd").innerHTML = locPosition;
+             map.setCenter(locPosition);
+             // 현재 지도 표로 주소를 검색
+             searchAddrFromCoords(locPosition, displayCenterInfo);
+
+           });
+         }
+         else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+            locPosition = new daum.maps.LatLng(37, 126.570667);
+             // message = 'geolocation을 사용할수 없어요..'
+             map.setCenter(locPosition);
+             searchAddrFromCoords(locPosition, displayCenterInfo);
+           }
+
+
+
+          // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+          var infowindow = new daum.maps.InfoWindow({zIndex:1});
+
+
+          // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+          function placesSearchCB (data, status, pagination) {
+            if (status === daum.maps.services.Status.OK) {
+
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+            // LatLngBounds 객체에 좌표를 추가합니다
+            var bounds = new daum.maps.LatLngBounds();
+
+            for (var i=0; i<data.length; i++) {
+                displayMarker(data[i]);
+                bounds.extend(new daum.maps.LatLng(data[i].y, data[i].x));
             }
-          }
 
-          // 지도에 마커를 표시하는 함수입니다
-          function displayMarker(place) {
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+            map.setBounds(bounds);
+        }
+      }
+
+      // 지도에 마커를 표시하는 함수입니다
+      function displayMarker(place) {
 
 
-            // 마커를 생성하고 지도에 표시합니다
-            var marker = new daum.maps.Marker({
-                map: map,
-                position: new daum.maps.LatLng(place.y, place.x)
-                //image: markerImage
-            });
-          marker.setMap(map);
-            // 마커에 클릭이벤트를 등록합니다
-            daum.maps.event.addListener(marker, 'click', function() {
-                // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-                infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-                infowindow.open(map, marker);
-            });
-          }
+        // 마커를 생성하고 지도에 표시합니다
+        var marker = new daum.maps.Marker({
+            map: map,
+            position: new daum.maps.LatLng(place.y, place.x)
+            //image: markerImage
+        });
+      marker.setMap(map);
+        // 마커에 클릭이벤트를 등록합니다
+        daum.maps.event.addListener(marker, 'click', function() {
+            // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+            infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+            infowindow.open(map, marker);
+        });
+      }
 
-          function searchAddrFromCoords(coords, callback) {
-              // 좌표로 행정동 주소 정보를 요청합니다
-              geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
-          }
+      function searchAddrFromCoords(coords, callback) {
+          // 좌표로 행정동 주소 정보를 요청합니다
+          geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+      }
 
-          var h1;
+      var h1;
 
-          function displayCenterInfo(result, status) {
-              if (status === daum.maps.services.Status.OK) {
-                  //var infoDiv = document.getElementById('centerAddr');
+      function displayCenterInfo(result, status) {
+          if (status === daum.maps.services.Status.OK) {
+              //var infoDiv = document.getElementById('centerAddr');
 
-                  for(var i = 0; i < result.length; i++) {
-                      // 행정동의 region_type 값은 'H' 이므로
-                      if (result[i].region_type === 'H') {
-                          h1 = result[i].address_name.split(" ");
-                        //  document.getElementById("demo").innerHTML = h1[2];
-                          break;
-                      }
+              for(var i = 0; i < result.length; i++) {
+                  // 행정동의 region_type 값은 'H' 이므로
+                  if (result[i].region_type === 'H') {
+                      h1 = result[i].address_name.split(" ");
+                    //  document.getElementById("demo").innerHTML = h1[2];
+                      break;
                   }
-                  // 키워드로 장소를 검색합니다
-                  ps.keywordSearch(h1[2] + ' 신발', placesSearchCB);
               }
+              // 키워드로 장소를 검색합니다
+              ps.keywordSearch(h1[2] + ' 신발', placesSearchCB);
           }
+      }
 
-        </script>
+    </script>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-shoe-prints fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-shoe-prints fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-shoe-prints fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; 빅데이터 캠퍼스 세종대 [우도희 김성훈 이유경 이경주 홍소정 김다은]</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
   </body>
+
 </html>
