@@ -45,7 +45,7 @@ def img(img_path):
     image_w = 64
     image_h = 64
     for i, f in enumerate(input_files):
-        img = Image.open(f) # --- (※6)
+        img = Image.open(f)
         img = img.convert("RGB")
         img = img.resize((image_w, image_h))
         data = np.asarray(img)
@@ -79,7 +79,7 @@ def img(img_path):
         image_w = 64
         image_h = 64
         for i, f in enumerate(output_files):
-            img = Image.open(f) # --- (※6)
+            img = Image.open(f)
             img = img.convert("RGB")
             img = img.resize((image_w, image_h))
             data = np.asarray(img)
@@ -89,7 +89,6 @@ def img(img_path):
         #Y = np.array(Y)
         output_X = output_X.astype("float") / 256
         output_pre = model.predict(output_X)
-        #print(output_pre)
 
 
         for i,v in enumerate(output_pre):
@@ -107,11 +106,7 @@ def img(img_path):
             rank.append(i)
 
     input_img_color = cv2.imread(pathi, cv2.IMREAD_COLOR )
-
-    #print(input_img_color.shape)
-    #print(input_img_color)
     input_height, input_width, input_channel = input_img_color.shape
-    #print (height, width, channel)
 
     input_b_sum=0
     input_g_sum=0
@@ -130,17 +125,15 @@ def img(img_path):
     input_b_avg=int(input_b_sum/input_pixel_count)
     input_g_avg=int(input_g_sum/input_pixel_count)
     input_r_avg=int(input_r_sum/input_pixel_count)
-    #print(input_b_avg,input_g_avg,input_r_avg)
 
     color_rank=[]
-    #output_cate_dir
+
     for get in rank:
         #print(output_cate_dir[get])
         a = output_cate_dir[get]
         #print(Path)
         output_img_color=cv2.imread(a, cv2.IMREAD_COLOR )
         output_height, output_width, output_channel = output_img_color.shape
-        #print (height, width, channel)
         output_b_sum=0
         output_g_sum=0
         output_r_sum=0
@@ -159,7 +152,7 @@ def img(img_path):
         output_b_avg=int(output_b_sum/output_pixel_count)
         output_g_avg=int(output_g_sum/output_pixel_count)
         output_r_avg=int(output_r_sum/output_pixel_count)
-        #print("평균",output_b_avg,output_g_avg,output_r_avg)
+        
         vec_distance= ((input_b_avg-output_b_avg)**2 + (input_g_avg-output_g_avg)**2 + (input_r_avg-output_r_avg)**2)**0.5
         info= vec_distance, a
         color_rank.append(info)

@@ -3,7 +3,6 @@
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -21,8 +20,6 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/coming-soon.css' %}" rel="stylesheet">
-
-
   </head>
 
   <body>
@@ -42,11 +39,6 @@
               <p class="mb-5">신발 사진을 검색해보세요<br>
                 <br>
               <div class="input-group input-group-newsletter">
-                <!--
-                <input type="email" class="form-control" placeholder="Enter email..." aria-label="Enter email..." aria-describedby="basic-addon">
-                <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button">Notify Me!</button>
-                </div>-->
                 <form method="post" enctype="multipart/form-data" novalidate>
                   {% csrf_token %}
                   {{ form.name }}
@@ -79,8 +71,6 @@
         </li>
       </ul>
     </div>
-
-
     <!-- Bootstrap core JavaScript -->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
